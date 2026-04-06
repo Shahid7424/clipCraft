@@ -378,8 +378,8 @@ export default function Navbar() {
 
             {/* Right side */}
             <div className="nav-right">
-              <a href="tel:+919999999999" className="nav-phone">
-                +91 99999 99999
+              <a href="tel:+91 9822449515" className="nav-phone">
+                +91 9822449515
               </a>
               <div className="nav-sep" />
               <Link href="/contact" className="nav-cta">

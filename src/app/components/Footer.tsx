@@ -280,7 +280,7 @@ export default function Footer() {
               <div className="contact-icon">✆</div>
               <div className="contact-info">
                 <span className="contact-label">Phone</span>
-                <a href="tel:+919999999999" className="contact-val">+91 99999 99999</a>
+                <a href="tel:+919822449515" className="contact-val">+91 9822449515</a>
               </div>
             </div>
 

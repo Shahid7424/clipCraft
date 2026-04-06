@@ -352,7 +352,7 @@ export default function Hero() {
             </Link>
           </div>
 
-          <div className={`stats-grid ${visible ? "visible" : ""}`} ref={statsRef}>
+           <div className={`stats-grid ${visible ? "visible" : ""}`} ref={statsRef}>
             {STATS.map((stat, i) => (
               <StatCard
                 key={stat.label}
