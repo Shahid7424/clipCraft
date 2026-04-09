@@ -278,7 +278,7 @@ export default function Features() {
           <div ref={header.ref} className={`feat-header fade-up ${header.inView ? "in" : ""}`}>
             <div className="eyebrow">
               <span className="e-dot" />
-              Why ClipCraft
+              Why Growth Media Solutions?
             </div>
             <h2 className="feat-h2">
               We Don&apos;t Just Deliver<br />

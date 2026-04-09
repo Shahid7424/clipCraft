@@ -480,7 +480,7 @@ export default function AboutPage() {
                 Built to Help<br />Brands <span className="grad-text">Win Online</span>
               </h2>
               <p className="section-p">
-                ClipCraft was born from a simple frustration — too many agencies deliver decks, not results. We started with a mission to be different: move fast, be transparent, and only charge for what actually moves the needle.
+                Growth Media Solutions was born from a simple frustration — too many agencies deliver decks, not results. We started with a mission to be different: move fast, be transparent, and only charge for what actually moves the needle.
               </p>
               <p className="section-p">
                 From launching e-commerce brands to scaling local businesses with performance ads and content that converts — we&apos;ve done it all. And we&apos;re just getting started.
@@ -542,7 +542,7 @@ export default function AboutPage() {
         {/* ── WHY US ── */}
         <div className="section">
           <div ref={why.ref} className={`fade-up ${why.inView ? "in" : ""}`}>
-            <div className="section-label" style={{ textAlign: "center" }}>Why ClipCraft</div>
+            <div className="section-label" style={{ textAlign: "center" }}>Why Growth Media Solutions</div>
             <h2 className="section-h2" style={{ textAlign: "center", maxWidth: 500, margin: "0 auto 0" }}>
               The Agency That<br /><span className="grad-text">Actually Delivers</span>
             </h2>

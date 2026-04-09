@@ -226,7 +226,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="brand-logo">
               <div className="logo-icon">✦</div>
-              <span className="logo-name">Clip<span>Craft</span></span>
+              <span className="logo-name">Growth Media <span>Solutions</span></span>
             </Link>
             <p className="brand-desc">
               We help businesses grow with high-performance websites, data-driven ads, and AI-powered solutions that deliver real results.
@@ -293,7 +293,7 @@ export default function Footer() {
             </div>
 
             <a
-              href="https://wa.me/919999999999"
+              href="https://wa.me/+91 9822449515"
               target="_blank"
               rel="noopener noreferrer"
               className="wa-badge"
@@ -308,7 +308,7 @@ export default function Footer() {
         {/* ── Bottom Bar ── */}
         <div className="footer-bottom">
           <p className="footer-copy">
-            © {year} <span>ClipCraft</span>. All rights reserved.
+            © {year} <span>Growth Media Solutions</span>. All rights reserved.
           </p>
           <div className="footer-legal">
             <Link href="/privacy" className="legal-link">Privacy Policy</Link>

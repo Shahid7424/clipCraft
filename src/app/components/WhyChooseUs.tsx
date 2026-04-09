@@ -264,7 +264,7 @@ export default function WhyChooseUs() {
             <div className="eyebrow"><span className="e-dot" /> Our Edge</div>
             <h2 className="why-h2">
               Why Brands Choose<br />
-              <span className="grad">ClipCraft Over Others</span>
+              <span className="grad">Growth Media Solutions Over Others</span>
             </h2>
             <p className="why-sub">
               We don&apos;t just provide services — we build systems that grow your business.

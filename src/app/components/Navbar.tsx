@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { href: "/portfolio", label: "Portfolio" },
   { href: "/about",     label: "About"     },
   { href: "/contact",   label: "Contact"   },
+  { href: "/blog",      label: "Blog" },
 ];
 
 export default function Navbar() {
@@ -360,7 +361,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="nav-logo">
               <div className="nav-logo-icon">✦</div>
-              <span className="nav-logo-text">Clip<em>Craft</em></span>
+              <span className="nav-logo-text">Growth <em>Media <br />Solutions</em></span>
             </Link>
 
             {/* Desktop center links */}
