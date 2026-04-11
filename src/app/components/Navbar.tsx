@@ -11,7 +11,7 @@ const NAV_LINKS = [
   { href: "/portfolio", label: "Portfolio" },
   { href: "/about",     label: "About"     },
   { href: "/contact",   label: "Contact"   },
-  { href: "/blog",      label: "Blog" },
+  { href: "/blog",      label: "Blog"      },
 ];
 
 export default function Navbar() {
@@ -21,14 +21,13 @@ export default function Navbar() {
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 10);
-    fn(); // run once on mount
+    fn();
     window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
   useEffect(() => { setIsOpen(false); }, [pathname]);
 
-  // lock body scroll when mobile menu open
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -39,21 +38,15 @@ export default function Navbar() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
-        /* ══ RESET — kills the gap ══ */
         *, *::before, *::after { box-sizing: border-box; }
         html, body { margin: 0; padding: 0; }
 
-        /* ══ NAVBAR SHELL ══ */
         .nav {
-          /* ✅ KEY FIX: position fixed, inset: 0 auto auto 0,
-             NO padding/margin on wrapper itself */
           position: fixed;
           top: 0; left: 0; right: 0;
           z-index: 1000;
-          /* no padding here — that was causing the gap */
         }
 
-        /* moving gradient top line */
         .nav-line {
           height: 2px;
           background: linear-gradient(90deg, #7050ff, #00d2b4, #ff5096, #00d2b4, #7050ff);
@@ -65,7 +58,6 @@ export default function Navbar() {
           100% { background-position: 300% 0%; }
         }
 
-        /* main bar */
         .nav-bar {
           width: 100%;
           background: #000;
@@ -73,59 +65,63 @@ export default function Navbar() {
           transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .nav.scrolled .nav-bar {
-          background: rgba(0, 0, 0, 0.95);
-          border-bottom-color: rgba(0, 210, 180, 0.15);
+          background: rgba(0,0,0,0.95);
+          border-bottom-color: rgba(0,210,180,0.15);
           box-shadow: 0 2px 40px rgba(0,0,0,0.8);
         }
 
-        /* inner row */
         .nav-inner {
           max-width: 1200px;
           margin: 0 auto;
-          padding: 0 24px;
-          height: 64px;
+          padding: 0 20px;
+          height: 72px;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 16px;
+          gap: 12px;
         }
 
         /* ── LOGO ── */
         .nav-logo {
-          display: flex; align-items: center; gap: 10px;
-          text-decoration: none; flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          flex-shrink: 0;
+          min-width: 0;
         }
-        .nav-logo-icon {
-          width: 36px; height: 36px;
-          background: linear-gradient(135deg, #00d2b4, #7050ff);
+        .nav-logo-img {
+          width: 150px;
+          height: 60px;
           border-radius: 9px;
-          display: flex; align-items: center; justify-content: center;
-          font-size: 16px; color: #fff;
+          object-fit: contain;
           flex-shrink: 0;
           transition: transform 0.3s ease, box-shadow 0.3s ease;
-          box-shadow: 0 0 12px rgba(0,210,180,0.25);
         }
-        .nav-logo:hover .nav-logo-icon {
-          transform: rotate(-8deg) scale(1.08);
-          box-shadow: 0 0 20px rgba(0,210,180,0.45);
+        /* Shrink logo on mobile so hamburger stays visible */
+        @media (max-width: 860px) {
+          .nav-logo-img {
+            width: 80px;
+            height: 36px;
+          }
         }
-        .nav-logo-text {
-          font-family: 'Syne', sans-serif;
-          font-size: 18px; font-weight: 800;
-          color: #fff; letter-spacing: -0.3px;
+        @media (max-width: 400px) {
+          .nav-logo-img {
+            width: 65px;
+            height: 30px;
+          }
         }
-        .nav-logo-text em {
-          font-style: normal;
-          background: linear-gradient(135deg, #00d2b4, #7050ff);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+        .nav-logo:hover .nav-logo-img {
+          transform: scale(1.04);
+          box-shadow: 0 0 20px rgba(0,210,180,0.3);
         }
 
-        /* ── DESKTOP LINKS (center) ── */
+        /* ── DESKTOP LINKS ── */
         .nav-center {
-          display: flex; align-items: center;
-          position: absolute; left: 50%; transform: translateX(-50%);
+          display: flex;
+          align-items: center;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
         }
         @media (max-width: 860px) { .nav-center { display: none; } }
 
@@ -141,8 +137,6 @@ export default function Navbar() {
         }
         .nav-link:hover { color: rgba(255,255,255,0.95); }
         .nav-link.active { color: #fff; font-weight: 500; }
-
-        /* gradient underline */
         .nav-link::after {
           content: '';
           position: absolute; bottom: 2px; left: 16px; right: 16px;
@@ -157,14 +151,16 @@ export default function Navbar() {
 
         /* ── RIGHT ACTIONS ── */
         .nav-right {
-          display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          flex-shrink: 0;
         }
 
         .nav-phone {
           font-family: 'DM Sans', sans-serif; font-size: 13px;
           color: rgba(255,255,255,0.38); text-decoration: none;
-          white-space: nowrap;
-          transition: color 0.2s;
+          white-space: nowrap; transition: color 0.2s;
         }
         .nav-phone:hover { color: rgba(255,255,255,0.75); }
         @media (max-width: 1024px) { .nav-phone { display: none; } }
@@ -175,7 +171,6 @@ export default function Navbar() {
         }
         @media (max-width: 1024px) { .nav-sep { display: none; } }
 
-        /* CTA button */
         .nav-cta {
           display: inline-flex; align-items: center; gap: 8px;
           font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700;
@@ -202,35 +197,49 @@ export default function Navbar() {
         .nav-cta:hover::before { left: 100%; }
         .nav-cta-arr { font-size: 13px; transition: transform 0.2s; }
         .nav-cta:hover .nav-cta-arr { transform: translateX(2px); }
-        @media (max-width: 400px) { .nav-cta { padding: 9px 14px; font-size: 12px; } }
+        /* Hide CTA text on very small screens, keep only arrow */
+        @media (max-width: 860px) {
+          .nav-cta { display: none; }
+        }
 
         /* ── HAMBURGER ── */
         .nav-ham {
           display: none;
-          flex-direction: column; justify-content: center; gap: 5px;
-          width: 38px; height: 38px;
-          border: 1px solid rgba(255,255,255,0.12);
-          border-radius: 9px; cursor: pointer; padding: 9px;
-          background: transparent; flex-shrink: 0;
+          flex-direction: column;
+          justify-content: center;
+          gap: 5px;
+          width: 42px;
+          height: 42px;
+          border: 1px solid rgba(255,255,255,0.2);
+          border-radius: 9px;
+          cursor: pointer;
+          padding: 10px;
+          background: rgba(255,255,255,0.05);
+          flex-shrink: 0;
           transition: border-color 0.2s, background 0.2s;
         }
         .nav-ham:hover {
-          border-color: rgba(255,255,255,0.25);
-          background: rgba(255,255,255,0.05);
+          border-color: rgba(0,210,180,0.4);
+          background: rgba(0,210,180,0.08);
         }
-        @media (max-width: 860px) { .nav-ham { display: flex; } }
+        @media (max-width: 860px) {
+          .nav-ham {
+            display: flex !important;
+          }
+        }
 
         .ham-l {
-          width: 100%; height: 1.5px;
-          background: rgba(255,255,255,0.75); border-radius: 2px;
+          width: 100%; height: 2px;
+          background: #fff;
+          border-radius: 2px;
           transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.2s;
           transform-origin: center;
         }
-        .ham-l.open-1 { transform: translateY(6.5px) rotate(45deg); }
+        .ham-l.open-1 { transform: translateY(7px) rotate(45deg); }
         .ham-l.open-2 { opacity: 0; transform: scaleX(0); }
-        .ham-l.open-3 { transform: translateY(-6.5px) rotate(-45deg); }
+        .ham-l.open-3 { transform: translateY(-7px) rotate(-45deg); }
 
-        /* ══ MOBILE MENU (full screen slide from right) ══ */
+        /* ══ MOBILE MENU ══ */
         .nav-mobile {
           position: fixed;
           inset: 0; z-index: 999;
@@ -246,7 +255,6 @@ export default function Navbar() {
           pointer-events: all;
         }
 
-        /* bg decorations */
         .mob-bg {
           position: absolute; inset: 0; pointer-events: none;
           background:
@@ -261,7 +269,6 @@ export default function Navbar() {
           background-size: 48px 48px;
         }
 
-        /* mobile top bar */
         .mob-top {
           display: flex; align-items: center; justify-content: space-between;
           padding: 16px 24px;
@@ -269,13 +276,14 @@ export default function Navbar() {
           position: relative; z-index: 1; flex-shrink: 0;
         }
         .mob-logo {
-          font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800;
-          color: #fff; text-decoration: none;
+          display: flex; align-items: center; gap: 10px;
+          text-decoration: none;
         }
-        .mob-logo em {
-          font-style: normal;
-          background: linear-gradient(135deg, #00d2b4, #7050ff);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        .mob-logo-img {
+          width: 90px;
+          height: 38px;
+          border-radius: 8px;
+          object-fit: contain;
         }
         .mob-close {
           width: 38px; height: 38px;
@@ -287,7 +295,6 @@ export default function Navbar() {
         }
         .mob-close:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
 
-        /* mobile links */
         .mob-links {
           flex: 1; display: flex; flex-direction: column; justify-content: center;
           padding: 0 28px; position: relative; z-index: 1;
@@ -314,7 +321,6 @@ export default function Navbar() {
         .mob-link:hover .mob-num,
         .mob-link.active .mob-num { color: #00d2b4; }
 
-        /* mobile footer */
         .mob-foot {
           padding: 24px 28px 32px;
           border-top: 1px solid rgba(255,255,255,0.05);
@@ -352,16 +358,17 @@ export default function Navbar() {
 
       {/* ══ NAVBAR ══ */}
       <header className={`nav ${scrolled ? "scrolled" : ""}`}>
-        {/* animated top line */}
         <div className="nav-line" />
-
         <div className="nav-bar">
           <div className="nav-inner">
 
             {/* Logo */}
             <Link href="/" className="nav-logo">
-              <div className="nav-logo-icon">✦</div>
-              <span className="nav-logo-text">Growth <em>Media <br />Solutions</em></span>
+              <img
+                src="/images/logo.jpeg"
+                alt="Growth Media Solutions Logo"
+                className="nav-logo-img"
+              />
             </Link>
 
             {/* Desktop center links */}
@@ -379,7 +386,7 @@ export default function Navbar() {
 
             {/* Right side */}
             <div className="nav-right">
-              <a href="tel:+91 9822449515" className="nav-phone">
+              <a href="tel:+919822449515" className="nav-phone">
                 +91 9822449515
               </a>
               <div className="nav-sep" />
@@ -387,6 +394,7 @@ export default function Navbar() {
                 Start Project
                 <span className="nav-cta-arr">→</span>
               </Link>
+              {/* Hamburger — always rendered, shown via CSS on mobile */}
               <button
                 className="nav-ham"
                 onClick={() => setIsOpen(o => !o)}
@@ -410,7 +418,7 @@ export default function Navbar() {
         {/* top bar */}
         <div className="mob-top">
           <Link href="/" className="mob-logo" onClick={() => setIsOpen(false)}>
-            Clip<em>Craft</em>
+            <img src="/images/logo.jpeg" alt="Logo" className="mob-logo-img" />
           </Link>
           <button className="mob-close" onClick={() => setIsOpen(false)}>✕</button>
         </div>
@@ -439,7 +447,7 @@ export default function Navbar() {
             {["▣", "◈", "✦", "▶"].map((ic, i) => (
               <a key={i} href="#" className="mob-soc">{ic}</a>
             ))}
-            <span className="mob-copy">© 2025 ClipCraft</span>
+            <span className="mob-copy">© 2025 Growth Media Solutions</span>
           </div>
         </div>
       </div>

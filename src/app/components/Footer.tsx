@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 const QUICK_LINKS = [
   { href: "/", label: "Home" },
@@ -21,9 +22,9 @@ const SERVICES = [
 
 const SOCIALS = [
   { label: "Instagram", href: "https://instagram.com", icon: "▣" },
-  { label: "LinkedIn",  href: "https://linkedin.com",  icon: "◈" },
-  { label: "Twitter",   href: "https://twitter.com",   icon: "✦" },
-  { label: "YouTube",   href: "https://youtube.com",   icon: "▶" },
+  { label: "LinkedIn", href: "https://linkedin.com", icon: "◈" },
+  { label: "Twitter", href: "https://twitter.com", icon: "✦" },
+  { label: "YouTube", href: "https://youtube.com", icon: "▶" },
 ];
 
 export default function Footer() {
@@ -111,7 +112,7 @@ export default function Footer() {
           text-decoration: none; margin-bottom: 16px;
         }
         .logo-icon {
-          width: 36px; height: 36px; border-radius: 10px;
+          width: 120px; height: 60px; border-radius: 10px;
           background: linear-gradient(135deg, #00d2b4, #7050ff);
           display: flex; align-items: center; justify-content: center;
           font-size: 16px; flex-shrink: 0;
@@ -205,7 +206,6 @@ export default function Footer() {
       `}</style>
 
       <footer className="footer">
-
         {/* ── CTA Strip ── */}
         <div className="footer-cta">
           <div className="footer-cta-text">
@@ -221,19 +221,30 @@ export default function Footer() {
 
         {/* ── Main Grid ── */}
         <div className="footer-main">
-
           {/* Brand */}
           <div>
-            <Link href="/" className="brand-logo">
-              <div className="logo-icon">✦</div>
-              <span className="logo-name">Growth Media <span>Solutions</span></span>
-            </Link>
+           <Image
+  src="/images/logo.jpeg"
+  alt="Growth Media Solutions"
+  width={160}
+  height={64}
+  style={{ objectFit: "contain", borderRadius: "9px" , marginBottom: "16px" }}
+/>
             <p className="brand-desc">
-              We help businesses grow with high-performance websites, data-driven ads, and AI-powered solutions that deliver real results.
+              We help businesses grow with high-performance websites,
+              data-driven ads, and AI-powered solutions that deliver real
+              results.
             </p>
             <div className="socials">
               {SOCIALS.map((s) => (
-                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="social-btn" title={s.label}>
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-btn"
+                  title={s.label}
+                >
                   {s.icon}
                 </a>
               ))}
@@ -246,7 +257,9 @@ export default function Footer() {
             <ul className="col-links">
               {QUICK_LINKS.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="col-link">{l.label}</Link>
+                  <Link href={l.href} className="col-link">
+                    {l.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -258,7 +271,9 @@ export default function Footer() {
             <ul className="col-links">
               {SERVICES.map((s) => (
                 <li key={s}>
-                  <Link href="/services" className="col-link">{s}</Link>
+                  <Link href="/services" className="col-link">
+                    {s}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -272,7 +287,9 @@ export default function Footer() {
               <div className="contact-icon">@</div>
               <div className="contact-info">
                 <span className="contact-label">Email</span>
-                <a href="mailto:hello@clipcraft.in" className="contact-val">hello@clipcraft.in</a>
+                <a href="mailto:hello@clipcraft.in" className="contact-val">
+                  hello@clipcraft.in
+                </a>
               </div>
             </div>
 
@@ -280,7 +297,9 @@ export default function Footer() {
               <div className="contact-icon">✆</div>
               <div className="contact-info">
                 <span className="contact-label">Phone</span>
-                <a href="tel:+919822449515" className="contact-val">+91 9822449515</a>
+                <a href="tel:+919822449515" className="contact-val">
+                  +91 9822449515
+                </a>
               </div>
             </div>
 
@@ -302,7 +321,6 @@ export default function Footer() {
               Chat on WhatsApp
             </a>
           </div>
-
         </div>
 
         {/* ── Bottom Bar ── */}
@@ -311,11 +329,14 @@ export default function Footer() {
             © {year} <span>Growth Media Solutions</span>. All rights reserved.
           </p>
           <div className="footer-legal">
-            <Link href="/privacy" className="legal-link">Privacy Policy</Link>
-            <Link href="/terms" className="legal-link">Terms of Use</Link>
+            <Link href="/privacy" className="legal-link">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="legal-link">
+              Terms of Use
+            </Link>
           </div>
         </div>
-
       </footer>
     </>
   );
