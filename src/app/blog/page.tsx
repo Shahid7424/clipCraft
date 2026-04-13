@@ -85,7 +85,7 @@ const videos = [
     author: "Sneha Joshi",
   },
    {
-    src: "/videos/video9.mp4",
+    src: "/videos/video09.mp4",
     tag: "Culture",
     title: "Where Tech Meets Creativity",
     subtitle: "Human imagination in the age of machines",
@@ -107,7 +107,7 @@ const videos = [
     author: "Sneha Joshi",
   },
   {
-    src: "/videos/video11.mp4",
+    src: "/videos/video011.mp4",
     tag: "Culture",
     title: "Where Tech Meets Creativity",
     subtitle: "Human imagination in the age of machines",
